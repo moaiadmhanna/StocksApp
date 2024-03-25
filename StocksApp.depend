@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1711325808 source:d:\fh technikum\algo\stocksapp\src\kursdaten.cpp
+	"KursDaten.h"
+
+1711325808 d:\fh technikum\algo\stocksapp\include\kursdaten.h
+
+1711325525 source:d:\fh technikum\algo\stocksapp\src\aktie.cpp
+	"Aktie.h"
+
+1711327150 d:\fh technikum\algo\stocksapp\include\aktie.h
+	<iostream>
+	"KursDaten.h"
+	"defualts.h"
+
+1711330530 d:\fh technikum\algo\stocksapp\include\defualts.h
+
+1711325462 source:d:\fh technikum\algo\stocksapp\src\hashtabelle.cpp
+	"Hashtabelle.h"
+
+1711327123 d:\fh technikum\algo\stocksapp\include\hashtabelle.h
+	"defualts.h"
+	"Aktie.h"
+
