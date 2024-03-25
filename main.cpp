@@ -10,7 +10,8 @@ using namespace std;
 int main()
 {
     Hashtabelle* Hashtabelle1 = new Hashtabelle();
-    Hashtabelle1->addStock("Microsoftee","87654321");
-    Aktie* aktie1 = Hashtabelle1->searchStock("MCOOTE");
+    Hashtabelle1->addStock("Microsoft","87654321");
+    Aktie* aktie1 = Hashtabelle1->searchStock("MSFT");
     cout << aktie1->nameGetter() << endl;
 }
+
