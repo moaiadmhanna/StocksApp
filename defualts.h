@@ -25,6 +25,16 @@ std::string string_to_upper(std::string name);
 
 
 extern unordered_map <string,string> tickerSymbolData;
+enum menu{
+    ADD = 1,
+    DEL,
+    IMPORT,
+    SEARCH,
+    PLOT,
+    SAVE,
+    LOAD,
+    QUIT
+};
 
 
 #endif //STOCKSAPP_DEFUALTS_H

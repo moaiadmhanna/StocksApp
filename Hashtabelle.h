@@ -22,7 +22,8 @@ public:
     void addStock(std::string name, std::string wkn);
     // um das Index in der StocksHashtable zu kriegen
     int hashFunction(std::string tickerSymbol);
-    Aktie* searchStock(std::string name);
+    int searchStock(std::string name);
+    void deleteStock(int index);
 
 
 protected:

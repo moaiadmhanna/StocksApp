@@ -35,7 +35,7 @@ std::string Hashtabelle::tickerSymbolGetter(std::string name){
             tickerSymbol += toupper(name[i]);
         }
     }
-    tickerSymbolData[name] = tickerSymbol;
+    tickerSymbolData[string_to_upper(name)] = tickerSymbol;
     return tickerSymbol;
 
 }
@@ -65,13 +65,28 @@ void Hashtabelle::addStock(std::string name, std::string wkn){
         index = (hashFunction(tickerSymbol) + (counter*counter))%HASHTABLE_SIZE;
         if(StocksHashtable[index] == nullptr){
             StocksHashtable[index] = aktie1;
+            numberOfInsertions++;
             break;
         }
         counter++;
     }
 }
 // TO_DO das müssen wir noch erweitern
-Aktie* Hashtabelle::searchStock(std::string name){
-    int index = hashFunction(name);
-    return StocksHashtable[hashFunction(name)];
+int Hashtabelle::searchStock(std::string tickerSymbol){
+    int index = -1;
+    int counter = 0;
+    while(true){
+        index = (hashFunction(tickerSymbol) + (counter*counter))%HASHTABLE_SIZE;
+        if(StocksHashtable[index] == nullptr){
+            index = -1;
+            break;
+        }
+        if(StocksHashtable[index]->tickerSymbolGetter() == tickerSymbol){break;}
+        counter++;
+    }
+    return index;
+}
+void Hashtabelle::deleteStock(int index) {
+    delete StocksHashtable[index];
+    StocksHashtable[index] = nullptr;
 }
