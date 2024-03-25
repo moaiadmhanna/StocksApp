@@ -1,5 +1,6 @@
 #ifndef KURSDATEN_H
 #define KURSDATEN_H
+#include <iostream>
 
 
 class KursDaten
@@ -11,6 +12,7 @@ class KursDaten
     protected:
 
     private:
+        std::string date;
 };
 
 #endif // KURSDATEN_H

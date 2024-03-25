@@ -14,6 +14,9 @@ class Hashtabelle
         std::string tickerSymbolGetter(std::string name);
         // Fügt die Aktie in der HashTabelle hin
         void addStock(std::string name, std::string wkn);
+        // um das Index in der StocksHashtable zu kriegen
+        int hashFunction(std::string tickerSymbol);
+        Aktie* searchStock(std::string name);
 
 
     protected:
@@ -21,6 +24,7 @@ class Hashtabelle
     private:
         // Hashtabelle von Aktien pointers
         Aktie* StocksHashtable[HASHTABLE_SIZE];
+        int numberOfInsertions;
 
 };
 

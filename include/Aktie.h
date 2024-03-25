@@ -10,11 +10,12 @@ class Aktie
     public:
         Aktie();
         virtual ~Aktie();
-        void nameGetter() const;
-        void wknGetter() const;
-        void tickerSymbolGetter() const;
-        std::string nameSetter(std::string name);
-        std::string wknSetter(std::string wkn);
+        std::string nameGetter() const;
+        std::string wknGetter() const;
+        std::string tickerSymbolGetter() const;
+        void nameSetter(std::string name);
+        void wknSetter(std::string wkn);
+        void tickerSymbolSetter(std::string tickerSymbol);
 
     protected:
 
@@ -22,7 +23,7 @@ class Aktie
         // name von der Aktie
         std::string name;
         // Wertpapierkennnummer von der Aktie
-        std::string WKN;
+        std::string wkn;
         // Kürzel von der Aktie
         std::string tickerSymbol;
         // KurseDaten von der Aktie

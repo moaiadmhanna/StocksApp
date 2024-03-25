@@ -42,6 +42,7 @@
 		<Unit filename="src/Aktie.cpp" />
 		<Unit filename="src/Hashtabelle.cpp" />
 		<Unit filename="src/KursDaten.cpp" />
+		<Unit filename="src/defualts.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

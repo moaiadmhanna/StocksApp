@@ -2,22 +2,41 @@
 1711325808 source:d:\fh technikum\algo\stocksapp\src\kursdaten.cpp
 	"KursDaten.h"
 
-1711325808 d:\fh technikum\algo\stocksapp\include\kursdaten.h
+1711369308 d:\fh technikum\algo\stocksapp\include\kursdaten.h
+	<iostream>
 
-1711325525 source:d:\fh technikum\algo\stocksapp\src\aktie.cpp
+1711378159 source:d:\fh technikum\algo\stocksapp\src\aktie.cpp
 	"Aktie.h"
 
-1711327150 d:\fh technikum\algo\stocksapp\include\aktie.h
+1711378177 d:\fh technikum\algo\stocksapp\include\aktie.h
 	<iostream>
 	"KursDaten.h"
 	"defualts.h"
 
-1711330530 d:\fh technikum\algo\stocksapp\include\defualts.h
+1711379460 d:\fh technikum\algo\stocksapp\include\defualts.h
+	<string>
+	<iostream>
+	<unordered_map>
 
-1711325462 source:d:\fh technikum\algo\stocksapp\src\hashtabelle.cpp
+1711380397 source:d:\fh technikum\algo\stocksapp\src\hashtabelle.cpp
 	"Hashtabelle.h"
 
-1711327123 d:\fh technikum\algo\stocksapp\include\hashtabelle.h
+1711379645 d:\fh technikum\algo\stocksapp\include\hashtabelle.h
 	"defualts.h"
 	"Aktie.h"
+	<string>
+
+1711380333 source:d:\fh technikum\algo\stocksapp\main.cpp
+	<iostream>
+	<string>
+	"defualts.h"
+	"Aktie.h"
+	"Hashtabelle.h"
+
+1711378730 d:\fh technikum\algo\stocksapp\include\kürzelmap.h
+	<iostream>
+	<unordered_map>
+
+1711379485 source:d:\fh technikum\algo\stocksapp\src\defualts.cpp
+	"defualts.h"
 
