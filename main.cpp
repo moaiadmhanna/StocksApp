@@ -20,6 +20,7 @@ void addStock(Hashtabelle* hashtable){
     cout << "Please enter the WKN: ";
     cin >> wkn;
     hashtable->addStock(name,wkn);
+    system("clear");
 }
 
 int searchStockIndex(Hashtabelle* hashtable){
@@ -50,6 +51,7 @@ void deleteStock(Hashtabelle* hashtable){
         hashtable->deleteStock(index);
         cout << "Stock has been deleted" << endl;
     }
+    system("clear");
 }
 void importStock(Hashtabelle* hashtable){
     cout << "For which Stock do you want to import the stockprices" << endl;
@@ -60,6 +62,7 @@ void importStock(Hashtabelle* hashtable){
     else{
         hashtable->importStock(index);
     }
+    system("clear");
 }
 void searchStock(Hashtabelle* hashtable){
     int index = searchStockIndex(hashtable);
@@ -68,6 +71,16 @@ void searchStock(Hashtabelle* hashtable){
     }
     else{
         hashtable->searchStock(index);
+    }
+    system("clear");
+}
+void plotStock(Hashtabelle* hashtable){
+    int index = searchStockIndex(hashtable);
+    if(index == -1){
+        cout << "Stock has been not found" << endl;
+    }
+    else{
+        hashtable->plotStock(index);
     }
 }
 bool programmMenu(Hashtabelle* hashtable){
@@ -89,6 +102,9 @@ bool programmMenu(Hashtabelle* hashtable){
             break;
         case SEARCH:
             searchStock(hashtable);
+            break;
+        case PLOT:
+            plotStock(hashtable);
             break;
         case QUIT:
             return false;

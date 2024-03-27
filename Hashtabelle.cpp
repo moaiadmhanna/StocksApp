@@ -161,3 +161,6 @@ void Hashtabelle::importStock(int index) {
 void Hashtabelle::searchStock(int index) {
 
 }
+void Hashtabelle::plotStock(int index) {
+    StocksHashtable[index]->graphPrinter();
+}

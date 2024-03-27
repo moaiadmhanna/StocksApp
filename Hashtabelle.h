@@ -28,6 +28,7 @@ public:
     void deleteStock(int index);
     void importStock(int index);
     void searchStock(int index);
+    void plotStock(int index);
 
 
 protected:

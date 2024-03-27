@@ -22,7 +22,7 @@ public:
     void nameSetter(std::string name);
     void wknSetter(std::string wkn);
     void tickerSymbolSetter(std::string tickerSymbol);
-    void printAllDates();
+    void graphPrinter();
     KursDaten* StockData[STOCK_DATA_SIZE];
 
 protected:
