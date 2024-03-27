@@ -25,6 +25,8 @@ std::string string_to_upper(std::string name);
 
 
 extern unordered_map <string,string> tickerSymbolData;
+
+
 enum menu{
     ADD = 1,
     DEL,

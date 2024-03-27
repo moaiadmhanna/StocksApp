@@ -20,7 +20,6 @@ void addStock(Hashtabelle* hashtable){
     cout << "Please enter the WKN: ";
     cin >> wkn;
     hashtable->addStock(name,wkn);
-    system("clear");
 }
 
 int searchStockIndex(Hashtabelle* hashtable){
@@ -53,6 +52,18 @@ void deleteStock(Hashtabelle* hashtable){
     }
     system("clear");
 }
+bool fileSize(ifstream& file){
+    string line;
+    int counter = 0;
+    while(getline(file,line)){
+        counter ++;
+    }
+    if(counter < 31){
+        cout << "File Should contain 30 StockPrices" << endl;
+        return false;
+    }
+    return true;
+}
 void importStock(Hashtabelle* hashtable){
     cout << "For which Stock do you want to import the stockprices" << endl;
     int index = searchStockIndex(hashtable);
@@ -60,7 +71,20 @@ void importStock(Hashtabelle* hashtable){
         cout << "Stock has been not found" << endl;
     }
     else{
-        hashtable->importStock(index);
+        cout << "Please enter the path of csv file: ";
+        std::string path;
+        cin >> path;
+        ifstream file(path);
+        if(!file.is_open()){
+            cout << "Error by opening file" << endl;
+            return;
+        }
+        if(fileSize(file)) {
+            file.clear();
+            file.seekg(0, std::ios::beg);
+            hashtable->importStock(index, move(file));
+            file.close();
+        }
     }
     system("clear");
 }
@@ -72,7 +96,6 @@ void searchStock(Hashtabelle* hashtable){
     else{
         hashtable->searchStock(index);
     }
-    system("clear");
 }
 void plotStock(Hashtabelle* hashtable){
     int index = searchStockIndex(hashtable);
@@ -80,6 +103,7 @@ void plotStock(Hashtabelle* hashtable){
         cout << "Stock has been not found" << endl;
     }
     else{
+        system("clear");
         hashtable->plotStock(index);
     }
 }
@@ -105,6 +129,12 @@ bool programmMenu(Hashtabelle* hashtable){
             break;
         case PLOT:
             plotStock(hashtable);
+            break;
+        case SAVE:
+            hashtable->saveHashtable();
+            break;
+        case LOAD:
+            hashtable->loadHashtable();
             break;
         case QUIT:
             return false;

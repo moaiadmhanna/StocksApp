@@ -13,6 +13,7 @@ std::string string_to_upper(std::string name){
     return resualt;
 }
 
+
 unordered_map<string, string> tickerSymbolData = {
         {"APPLE", "AAPL"},
         {"MICROSOFT", "MSFT"},

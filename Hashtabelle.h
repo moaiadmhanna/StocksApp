@@ -11,6 +11,7 @@
 #include "Aktie.h"
 #include <string>
 #include <fstream>
+#include <utility>
 
 
 class Hashtabelle
@@ -26,9 +27,12 @@ public:
     int hashFunction(std::string tickerSymbol);
     int searchStockIndex(std::string name);
     void deleteStock(int index);
-    void importStock(int index);
+    void importStock(int index,ifstream file);
     void searchStock(int index);
     void plotStock(int index);
+    bool stockDataEntries(int index);
+    void saveHashtable();
+    void loadHashtable();
 
 
 protected:
