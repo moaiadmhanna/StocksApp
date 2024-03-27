@@ -13,11 +13,17 @@ class KursDaten
 public:
     KursDaten();
     virtual ~KursDaten();
+    std::string date;
+    std::string open;
+    std::string high;
+    std::string low;
+    std::string close;
+    std::string adjClose;
+    std::string volume;
 
 protected:
 
 private:
-    std::string date;
 };
 
 

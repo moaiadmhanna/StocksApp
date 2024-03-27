@@ -6,12 +6,17 @@
 
 Aktie::Aktie()
 {
-    //ctor
+    for(int  i = 0 ; i < STOCK_DATA_SIZE ; i++){
+        StockData[i] = nullptr;
+    }
 }
 
 Aktie::~Aktie()
 {
-    //dtor
+    for(int  i = 0 ; i < STOCK_DATA_SIZE ; i++){
+        delete StockData[i];
+        StockData[i] = nullptr;
+    }
 }
 std::string Aktie::nameGetter() const{
     return this->name;
@@ -30,4 +35,9 @@ void Aktie::wknSetter(std::string wkn){
 }
 void Aktie::tickerSymbolSetter(std::string tickerSymbol){
     this->tickerSymbol = tickerSymbol;
+}
+void Aktie::printAllDates() {
+    for(int i = 0; i < STOCK_DATA_SIZE; i++){
+        cout << StockData[i]->date << endl;
+    }
 }

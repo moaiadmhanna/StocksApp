@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "defualts.h"
-#include "Aktie.h"
 #include "Hashtabelle.h"
 
 
@@ -31,15 +30,15 @@ int searchStockIndex(Hashtabelle* hashtable){
         std::string tickerSymbol;
         cout << "Enter the TickerSymbol: ";
         cin >> tickerSymbol;
-        return hashtable->searchStock(string_to_upper(tickerSymbol));
+        return hashtable->searchStockIndex(string_to_upper(tickerSymbol));
     }
     else{
         std::string name;
         cout << "Enter the Name: ";
         cin >> name;
-        if(tickerSymbolData[string_to_upper(name)] == ""){return -1;}
+        if(tickerSymbolData[string_to_upper(name)].empty()){return -1;}
         std::string tickerSymbol = tickerSymbolData[string_to_upper(name)];
-        return hashtable->searchStock(tickerSymbol);
+        return hashtable->searchStockIndex(tickerSymbol);
     }
 }
 void deleteStock(Hashtabelle* hashtable){
@@ -52,7 +51,26 @@ void deleteStock(Hashtabelle* hashtable){
         cout << "Stock has been deleted" << endl;
     }
 }
-void programmMenu(Hashtabelle* hashtable){
+void importStock(Hashtabelle* hashtable){
+    cout << "For which Stock do you want to import the stockprices" << endl;
+    int index = searchStockIndex(hashtable);
+    if(index == -1){
+        cout << "Stock has been not found" << endl;
+    }
+    else{
+        hashtable->importStock(index);
+    }
+}
+void searchStock(Hashtabelle* hashtable){
+    int index = searchStockIndex(hashtable);
+    if(index == -1){
+        cout << "Stock has been not found" << endl;
+    }
+    else{
+        hashtable->searchStock(index);
+    }
+}
+bool programmMenu(Hashtabelle* hashtable){
     int userInput;
     while(true){
         cout << "Choose an Option from the menu [ADD (1),DELETE (2), IMPORT(3), SEARCH(4), PLOT(5), SAVE(6), LOAD(7), QUIT(8)]: ";
@@ -66,15 +84,25 @@ void programmMenu(Hashtabelle* hashtable){
         case DEL:
             deleteStock(hashtable);
             break;
+        case IMPORT:
+            importStock(hashtable);
+            break;
+        case SEARCH:
+            searchStock(hashtable);
+            break;
+        case QUIT:
+            return false;
         default:
             cout << "Invaild Input" << endl;
     }
+    return true;
 }
 int main()
 {
     Hashtabelle* hashtabelle1 = new Hashtabelle();
     while(true) {
-        programmMenu(hashtabelle1);
+        if(!programmMenu(hashtabelle1)){break;};
     }
+    delete hashtabelle1;
 }
 

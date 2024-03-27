@@ -22,6 +22,8 @@ public:
     void nameSetter(std::string name);
     void wknSetter(std::string wkn);
     void tickerSymbolSetter(std::string tickerSymbol);
+    void printAllDates();
+    KursDaten* StockData[STOCK_DATA_SIZE];
 
 protected:
 
@@ -33,7 +35,6 @@ private:
     // Kürzel von der Aktie
     std::string tickerSymbol;
     // KurseDaten von der Aktie
-    KursDaten* StockData[STOCK_DATA_SIZE];
 
 };
 

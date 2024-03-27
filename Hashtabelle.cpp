@@ -14,7 +14,10 @@ Hashtabelle::Hashtabelle()
 
 Hashtabelle::~Hashtabelle()
 {
-    //dtor
+    for(int i = 0 ; i < HASHTABLE_SIZE ; i++){
+        delete StocksHashtable[i];
+        StocksHashtable[i] = nullptr;
+    }
 }
 
 
@@ -31,9 +34,9 @@ std::string Hashtabelle::tickerSymbolGetter(std::string name){
     std::string tickerSymbol;
     tickerSymbol += toupper(name[0]);
     for(int i = 1 ; i < nameLength ; i++){
-        if(i%2 == 0){
+        if (i % 2 == 0)
             tickerSymbol += toupper(name[i]);
-        }
+
     }
     tickerSymbolData[string_to_upper(name)] = tickerSymbol;
     return tickerSymbol;
@@ -68,11 +71,16 @@ void Hashtabelle::addStock(std::string name, std::string wkn){
             numberOfInsertions++;
             break;
         }
+        // Damit die Aktie nur einmal in der Hashtabelle gespeichert wird.
+        else if (StocksHashtable[index]->nameGetter() == name){
+            cout << "Stock has been already added" << endl;
+            break;
+        }
         counter++;
     }
 }
 // TO_DO das müssen wir noch erweitern
-int Hashtabelle::searchStock(std::string tickerSymbol){
+int Hashtabelle::searchStockIndex(std::string tickerSymbol){
     int index = -1;
     int counter = 0;
     while(true){
@@ -89,4 +97,67 @@ int Hashtabelle::searchStock(std::string tickerSymbol){
 void Hashtabelle::deleteStock(int index) {
     delete StocksHashtable[index];
     StocksHashtable[index] = nullptr;
+    numberOfInsertions--;
+}
+
+void Hashtabelle::importStock(int index) {
+    cout << "Please enter the path of csv file: ";
+    std::string path;
+    cin >> path;
+    ifstream file(path);
+    if(!file.is_open()){
+        cout << "Error by opening file" << endl;
+        return;
+    }
+    string line;
+    int counter = 0;
+    while(getline(file,line) && counter <= 30){
+        KursDaten* kursData = new KursDaten();
+        if(counter == 0) {
+            counter++;
+            continue;
+        }
+        string cell;
+        int cnt = 0;
+        for (char c: line) {
+            if (c != ',') {
+                cell += c;
+            } else {
+                switch (cnt) {
+                    case 0:
+                        kursData->date = cell;
+                        break;
+                    case 1:
+                        kursData->open = cell;
+                        break;
+                    case 2:
+                        kursData->high = cell;
+                        break;
+                    case 3:
+                        kursData->low = cell;
+                        break;
+                    case 4:
+                        kursData->close = cell;
+                        break;
+                    case 5:
+                        kursData->adjClose = cell;
+                        break;
+                    case 6:
+                        kursData->volume = cell;
+                        break;
+                }
+                cnt++;
+                cell.clear();
+            }
+        }
+        delete StocksHashtable[index]->StockData[counter-1];
+        StocksHashtable[index]->StockData[counter-1] = nullptr;
+        StocksHashtable[index]->StockData[counter-1] = kursData;
+        counter++;
+    }
+    // Close the file
+    file.close();
+}
+void Hashtabelle::searchStock(int index) {
+
 }

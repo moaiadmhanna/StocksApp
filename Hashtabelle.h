@@ -6,9 +6,11 @@
 #define STOCKSAPP_HASHTABELLE_H
 
 
+#include <iostream>
 #include "defualts.h"
 #include "Aktie.h"
 #include <string>
+#include <fstream>
 
 
 class Hashtabelle
@@ -22,8 +24,10 @@ public:
     void addStock(std::string name, std::string wkn);
     // um das Index in der StocksHashtable zu kriegen
     int hashFunction(std::string tickerSymbol);
-    int searchStock(std::string name);
+    int searchStockIndex(std::string name);
     void deleteStock(int index);
+    void importStock(int index);
+    void searchStock(int index);
 
 
 protected:
